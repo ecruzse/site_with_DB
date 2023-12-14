@@ -1,5 +1,5 @@
-# Frontend with Database 
->A simple website with database integration
+# Front-end Website with Database Integration
+>A simple website using Flask to send, retrieve and alter data from a SQL Database
 
 *Project Requirements*
 
