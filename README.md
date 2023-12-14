@@ -1,5 +1,5 @@
-# Frontend with Database
-## A simple website with database integration
+# Frontend with Database 
+>A simple website with database integration
 
 *Project Requirements*
 
