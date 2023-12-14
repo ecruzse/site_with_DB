@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Grooming Registration Form</title>
+
+    <style>
+        html {
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: medium;
+            text-align: center;
+        }
+
+        form {
+            background-color: lightblue;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        tr {
+            background-color: rgb(177,156,217);
+            border-radius: 10px;
+        }
+
+        li {
+            background-color: rgb(254, 216, 177);
+            border-radius: 10px;
+        }
+
+        ul {
+            list-style-type: upper-roman;
+        }
+
+        table {
+            text-align: center;
+        }
+
+        button {
+            font-size: medium;
+            background-color: #ff7f7f;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        button:hover {
+            background-color: rgb(177,156,217);
+            color:white;
+        }
+
+    </style>
+</head>
+<body>
+
+{% block content %}
+    <div>
+        <form action="#" method="POST">
+        <table>
+            <tr>
+                <th>PetCredentials</th>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Your Email &#40owner&#41</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="first_name" required></td>
+                <td><input type="text" name="last_name" required></td>
+                <td><input type="email" placeholder="email@site.com" name="email" required></td>
+            </tr>
+            <tr>
+                <th>Type of pet</th>
+            </tr>
+            <tr>
+                <td>Dog<input type="radio" name="pet_type" value="Dog"></td>
+                <td>Cat<input type="radio" name="pet_type"value="Cat"></td>
+                <td>Other:<input type="radio" name="pet_type" value="Other">
+                </td>
+            </tr>
+            <tr>
+                <th>Breed</th>
+            </tr>
+            <tr>
+                <td><input type="text" name="breed"></td>
+            </tr>
+            <tr>
+                <th>Pet's Date of Birth</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="date" name="dob" id="DOB">
+                </td>
+            </tr>
+            <tr>
+                <th>Pet's Sex</th>
+            </tr>
+
+            <tr>
+                <td>Male<input type="radio" name="pet_s" id="" value="Male"></td>
+                <td>Female<input type="radio" name="pet_s" id="" value="Female"></td>
+            </tr>
+            <tr>
+                <th>Why did your pet want to come today?</th>
+            </tr>
+            <tr>
+                <td><input type="radio" name="exam" value="Illness Exam">Illness Exam</td>
+                <td><input type="radio" name="exam" value="Wellness Exam">Wellness Exam</td>
+                
+            </tr>
+        </table>
+
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <div>
+       <h2>Pet Credential Info </h2>
+       <ul>
+        {% for item in db_data %}
+            <li>{{ item['user_id'] }} - {{ item['first_name'] }} - {{ item['last_name'] }} - {{ item['email'] }} - {{ item['type_of_pet'] }} - {{ item['breed'] }} - {{ item['pet_DOB'] }} - {{ item['male_female'] }} - {{ item['visit_reason'] }} </li>
+            <form action="delete" method="POST">
+                <button name="delete_user" type="submit" value="{{ item['user_id'] }}">DELETE USER: {{ item['user_id'] }}</button>
+            </form>
+        {% endfor %}
+    
+        </ul>
+
+        
+    </div>
+
+{% endblock %}
+</body>
+</html>
