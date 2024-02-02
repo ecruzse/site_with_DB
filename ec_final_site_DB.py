@@ -1,11 +1,14 @@
 from flask import Flask, redirect, url_for, render_template, request, session, flash
 import mysql.connector
 import logging
+import os 
+
+key = os.getenv("SERVER_PW")
 # sql start
 def create_connection():
     conn = None
     try:
-        conn = mysql.connector.connect(user='root', password='gegsyg-wejVor-9ponbo', host='localhost', database='ec_final')
+        conn = mysql.connector.connect(user='root', password=key, host='localhost', database='ec_final')
         cursor = conn.cursor(dictionary=True)
         cursor.execute("SELECT DATABASE()")
         info = cursor.fetchone()
